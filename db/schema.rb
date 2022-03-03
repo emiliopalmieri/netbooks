@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_03_203225) do
+ActiveRecord::Schema.define(version: 2022_03_03_205959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2022_03_03_203225) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "machines", force: :cascade do |t|
+    t.string "serial"
+    t.string "macAddress"
+    t.text "observations"
+    t.bigint "owner_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_machines_on_owner_id"
   end
 
   create_table "owners", force: :cascade do |t|
@@ -31,5 +41,6 @@ ActiveRecord::Schema.define(version: 2022_03_03_203225) do
     t.index ["course_id"], name: "index_owners_on_course_id"
   end
 
+  add_foreign_key "machines", "owners"
   add_foreign_key "owners", "courses"
 end

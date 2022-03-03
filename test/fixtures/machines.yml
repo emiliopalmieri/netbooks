@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  serial: MyString
+  macAddress: MyString
+  observations: MyText
+  owner: one
+
+two:
+  serial: MyString
+  macAddress: MyString
+  observations: MyText
+  owner: two
