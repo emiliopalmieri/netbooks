@@ -4,4 +4,7 @@ class Owner < ApplicationRecord
   validates :course_id, presence: true, numericality: true
   has_one :machine
   belongs_to :course
+  
+  scope :search_palm, -> { where('name like ?', '%Palm%') }
+  
 end
