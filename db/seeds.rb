@@ -8,3 +8,6 @@
 courso1 = Course.create(name: "1ro 1ra")
 courso2 = Course.create(name: "1ro 2da")
 courso3 = Course.create(name: "1ro 3ra")
+courso4 = Course.create(name: "2do 1ra")
+courso5 = Course.create(name: "2do 2da")
+courso6 = Course.create(name: "2do 3ra")
