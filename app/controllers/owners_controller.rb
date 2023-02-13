@@ -1,5 +1,7 @@
+# frozen_string_literal: false
+
 class OwnersController < ApplicationController
-  before_action :set_owner, only: [:show, :update, :destroy]
+  before_action :set_owner, only: %i[show update destroy]
 
   # GET /owners
   def index
@@ -39,13 +41,14 @@ class OwnersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_owner
-      @owner = Owner.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def owner_params
-      params.require(:owner).permit(:cuil, :name, :observations, :course_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_owner
+    @owner = Owner.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def owner_params
+    params.require(:owner).permit(:cuil, :name, :observations, :course_id)
+  end
 end

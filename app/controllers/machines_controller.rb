@@ -1,5 +1,7 @@
+# frozen_string_literal: false
+
 class MachinesController < ApplicationController
-  before_action :set_machine, only: [:show, :update, :destroy]
+  before_action :set_machine, only: %i[show update destroy]
 
   # GET /machines
   def index
@@ -39,13 +41,14 @@ class MachinesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_machine
-      @machine = Machine.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def machine_params
-      params.require(:machine).permit(:serial, :macAddress, :observations, :owner_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_machine
+    @machine = Machine.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def machine_params
+    params.require(:machine).permit(:serial, :macAddress, :observations, :owner_id)
+  end
 end
