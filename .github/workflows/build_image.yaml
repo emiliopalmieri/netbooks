@@ -1,0 +1,16 @@
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '0.1.1'
+        required: true
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout main
+      uses: actions/checkout@v2
+
+    - name: Test version input
+      run: echo "The tag version is ${{github.event.inputs.version }}"
